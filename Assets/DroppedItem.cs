@@ -1,19 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DroppedItem : MonoBehaviour
+public class DroppedItem : MonoBehaviour, IPointerDownHandler
 {
-
-    // Use this for initialization
-    void Start()
+    private ItemType itemType;
+    public void Initialize(ItemType type)
     {
+        itemType = type;
+    }
+    public void GetItemToInventory()
+    {
+        if (UiInventory.Instance.IsInventoryFull() == true)
+        {
+            Debug.Log("인벤토리가 가득 찼어요");
+            return;
+        }
 
+        UiInventory.Instance.AddItem(itemType);
+
+        Destroy(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
+
+    public void OnPointerDown(PointerEventData eventData)
+    {     
+        GetItemToInventory();
     }
+
+  
 }

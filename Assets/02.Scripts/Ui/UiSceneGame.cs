@@ -5,10 +5,11 @@ using UnityEngine;
 public class UiSceneGame : UiSceneBase
 {
     [SerializeField]
-    private UiInventory uiInventory;
+    private GameObject inventory;
+
     public void OnClickInventoryButton()
     {
-        uiInventory.gameObject.SetActive(!uiInventory.gameObject.activeSelf);
+        inventory.SetActive(!inventory.activeSelf);
     }
 
 }

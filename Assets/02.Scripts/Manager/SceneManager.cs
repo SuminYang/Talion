@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //씬 추가될때마다 여기에 enum값 추가 해주셔야 되고 이름은 추가하신 씬 이름과 같아야 합니다.
 public enum SceneType
 {
-    SceneTitle, SceneGame , SceneGacha
+    SceneTitle, SceneGame , SceneGacha , SceneTrigger , SceneNameinput
 }
 
 public class SceneManager : SingletonMono<SceneManager>
@@ -17,7 +17,7 @@ public class SceneManager : SingletonMono<SceneManager>
     //값을 에디터 인스펙터에서 조절하시면 전환되는 속도를 조절하실수 있습니다. 
     //디폴트는 1초 입니다. (ex 2로 하면 전환속도가 2배 되고 0.5로 하시면 전환속도가 0.5초가 됩니다)
     [SerializeField]
-    private float fadeSpeed = 1f;
+    private float fadeSpeed = 1.5f;
 
     private SceneType currentScene = SceneType.SceneTitle;
 
@@ -42,7 +42,7 @@ public class SceneManager : SingletonMono<SceneManager>
         currentScene = type;
 
         float alpha = 0f;
-        while (alpha < 1f)
+        while (alpha < 1.5f)
         {
             alpha += Time.deltaTime * fadeSpeed;
             fadeImage.color = new Color(0f, 0f, 0f, alpha);

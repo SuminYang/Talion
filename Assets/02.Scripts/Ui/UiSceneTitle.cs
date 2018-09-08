@@ -7,7 +7,7 @@ public class UiSceneTitle : UiSceneBase
     public void OnClickStartButton()
     {
         //게임씬으로 변환
-        SceneManager.Instance.ChangeScene(SceneType.SceneGame);     
+        SceneManager.Instance.ChangeScene(SceneType.SceneTrigger);     
     }
 
     public void OnClickLoadButton()

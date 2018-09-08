@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/SceneTitle.unity
     guid: ecd907227d9f16c428ea4f048460d0ba
-  - enabled: 1
-    path: Assets/01.Scenes/SceneGame.unity
-    guid: c9a3952ffdd91054fba4900d005c084a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/01.Scenes/SceneGacha.unity
     guid: 61d33c3398fbae141a0f07116de4d331
+  - enabled: 1
+    path: Assets/01.Scenes/SceneNameinput.unity
+    guid: 15c70673f00084741b9731f3f8f7c775
+  - enabled: 1
+    path: Assets/01.Scenes/SceneTrigger.unity
+    guid: d010901e2ec82b54abd3166dbb6ffe6f

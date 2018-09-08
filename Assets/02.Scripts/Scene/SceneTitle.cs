@@ -6,7 +6,7 @@ public class SceneTitle : UiSceneBase
 {
     public void OnClickStartButton()
     {  
-        SceneManager.Instance.ChangeScene(SceneType.SceneGame);
+        SceneManager.Instance.ChangeScene(SceneType.SceneTrigger);
     }
 
     public void OnClickLoadButton()

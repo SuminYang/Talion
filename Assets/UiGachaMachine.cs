@@ -32,6 +32,9 @@ public class UiGachaMachine : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private UiGoinInfo uiCoinInfo;
 
+    [SerializeField]
+    private UiItemBoard uiItemBoard;
+
     //연출 설정값
     private float flashTime = 0.7f;
     private float ballSpawnTime = 1.5f;
@@ -129,8 +132,10 @@ public class UiGachaMachine : MonoBehaviour, IPointerClickHandler
 
         flash.color = new Color(1f, 1f, 1f, 0f);
         iTween.Stop(flash.gameObject);
+        string itemName = DataManager.Instance.dataBaseLoader.GetRandomGachaItem;
+        uiGachaPopup.ShowItemInfoText(itemSpawnTime, itemName);
+        uiItemBoard.UpdateItemInfo(itemName);
 
-        uiGachaPopup.ShowItemInfoText(itemSpawnTime, "Test Item");
         yield return new WaitForSeconds(itemSpawnTime);
 
         uiGachaPopup.ShowConfirmButton(confirmButtonSpawnTime);

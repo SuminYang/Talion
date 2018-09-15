@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/SceneTrigger.unity
     guid: d010901e2ec82b54abd3166dbb6ffe6f
+  - enabled: 1
+    path: Assets/01.Scenes/SceneGame.unity
+    guid: 2f92b61ba1ac29d4f8d757945ec5a0cd

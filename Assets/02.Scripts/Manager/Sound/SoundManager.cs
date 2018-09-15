@@ -29,7 +29,13 @@ public class SoundManager : SingletonMono<SoundManager>
         base.Awake();
         LoadSounds();
         MakeEfxSoundPool();
+        SetBGMSource();
     }
+    private void SetBGMSource()
+    {
+        bgmSource.loop = true;
+    }
+
     private void MakeEfxSoundPool()
     {
         efxSoundPool = new ObjectPool<EfxSound>(efxPrefab, 3, this.transform);

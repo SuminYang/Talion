@@ -34,7 +34,7 @@ public class UiGachaItem : MonoBehaviour
     private IEnumerator SetDescriptionParent(Transform tr)
     {
         yield return null;
-        descriptionObject.transform.parent = tr;
+        descriptionObject.transform.SetParent(tr);
     }
     public void SetInteractable(bool hasItem)
     {

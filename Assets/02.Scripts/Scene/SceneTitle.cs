@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SceneTitle : UiSceneBase
 {
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM("탈리온");
+    }
     public void OnClickStartButton()
     {  
         SceneManager.Instance.ChangeScene(SceneType.SceneTrigger);
@@ -25,4 +29,14 @@ public class SceneTitle : UiSceneBase
         Application.Quit();
     }
 
+    //테스트용 코드 (삭제해도됨)
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SoundManager.Instance.PlayEFX("마우스 커서 클릭하는 소리");
+        }
+    }
+#endif
 }

@@ -14,7 +14,9 @@ public class ObjectPool<T> where T : Component
     {
         this.prefab = prefab;
         this.parent = parent;
-        
+
+        datas = new List<T>();
+
         for (int i = 0; i < initNum; i++)
         {
             MakeObject();
@@ -31,7 +33,7 @@ public class ObjectPool<T> where T : Component
         return obj;
     }
 
-    private T GetItem()
+    public T GetItem()
     {
         for (int i = 0; i < datas.Count; i++)
         {

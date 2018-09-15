@@ -13,8 +13,9 @@ public class SoundManager : SingletonMono<SoundManager>
     private Dictionary<string, AudioClip> bgmContainer = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> effectContainer = new Dictionary<string, AudioClip>();
     
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         LoadSounds();
     }
 

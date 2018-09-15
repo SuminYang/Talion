@@ -35,6 +35,10 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
             DontDestroyOnLoad(instance.gameObject);            
         }
     }
+    public void Awake()
+    {
+        SetInstance();
+    }
 }
 
 //씬이 전환돼면 사라짐 (SceneManager,SoundManager 등등 모든 씬에서 사용하는 애들)

@@ -16,8 +16,5 @@ public class UiSceneGame : UiSceneBase
     public void OnClickMenuButton()
     {
         Menu.SetActive(!inventory.activeSelf);
-
-       
-      
     }
 }

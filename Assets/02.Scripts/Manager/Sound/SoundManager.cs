@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//사운드 파일 추가 경로
-//Resources 폴더 
-
-//사운드 재생하는 방법
-//BGM :  SoundManager.Instance.PlayBGM("BGM이름");
-//EFX :  SoundManager.Instance.PlayEFX("효과음이름")
-
 public class SoundManager : SingletonMono<SoundManager>
 {
     [SerializeField]
@@ -17,39 +10,24 @@ public class SoundManager : SingletonMono<SoundManager>
     [SerializeField]
     private EfxSound efxPrefab;
 
-    private ObjectPool<EfxSound> efxSoundPool;
-
     private Dictionary<string, AudioClip> bgmContainer = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> effectContainer = new Dictionary<string, AudioClip>();
-
-
-
+    
     private new void Awake()
     {
         base.Awake();
         LoadSounds();
-        MakeEfxSoundPool();
-        SetBGMSource();
-    }
-    private void SetBGMSource()
-    {
-        bgmSource.loop = true;
-    }
-
-    private void MakeEfxSoundPool()
-    {
-        efxSoundPool = new ObjectPool<EfxSound>(efxPrefab, 3, this.transform);
     }
 
     private void LoadSounds()
     {
-        AudioClip[] bgmClips = Resources.LoadAll<AudioClip>("Sound/BGM/");
+        AudioClip[] bgmClips = Resources.LoadAll<AudioClip>("BGM/");
         for (int i = 0; i < bgmClips.Length; i++)
         {
             bgmContainer.Add(bgmClips[i].name, bgmClips[i]);
         }
 
-        AudioClip[] efxClips = Resources.LoadAll<AudioClip>("Sound/Effect/");
+        AudioClip[] efxClips = Resources.LoadAll<AudioClip>("Effect/");
         for (int i = 0; i < efxClips.Length; i++)
         {
             effectContainer.Add(efxClips[i].name, efxClips[i]);
@@ -78,12 +56,6 @@ public class SoundManager : SingletonMono<SoundManager>
         }
 
         //이펙트 재생
-        EfxSound sound = efxSoundPool.GetItem();
-
-        if (sound != null)
-        {
-            sound.Play(effectContainer[name]);
-        }
     }
 
 }

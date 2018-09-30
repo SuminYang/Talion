@@ -7,9 +7,8 @@ public class EfxSound : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    public void Play(AudioClip clip, float volume = 1f)
+    public void Play(float volume = 1f)
     {
-        audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.Play();
     }

@@ -32,17 +32,12 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
         }
         else
         {
-            DontDestroyOnLoad(instance.gameObject);
+            DontDestroyOnLoad(instance.gameObject);            
         }
     }
     public void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-            SetInstance();
+        SetInstance();
     }
 }
 
@@ -72,8 +67,8 @@ public class DestroyedSingletonMono<T> : MonoBehaviour where T : MonoBehaviour
     }
 
     private static void SetInstance()
-    {
-        instance = FindObjectsOfTypeAll(typeof(T)) as T;
+    {        
+        instance = FindObjectsOfTypeAll(typeof(T)) as T;   
     }
 }
 

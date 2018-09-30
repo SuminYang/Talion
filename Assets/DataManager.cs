@@ -17,14 +17,4 @@ public class DataManager : SingletonMono<DataManager>
         dataBaseLoader = new DatabaseLoader();
         dataBaseLoader.LoadAllDatas();
     }
-
-#if UNITY_EDITOR
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dataBaseLoader.UnlockGachaItem("범이의손목보호대1");
-        }
-    }
-#endif
 }

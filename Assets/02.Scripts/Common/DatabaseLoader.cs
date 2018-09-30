@@ -5,8 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using Mono.Data.SqliteClient;
+
 using UnityEngine.UI;
+using Mono.Data.Sqlite;
 
 /// <summary>
 /// DB 파일을 읽어오고 정보를 저장
@@ -17,6 +18,7 @@ public class DatabaseLoader
     public void LoadAllDatas()
     {
         LoadGachaDB();
+        LoadDialogDB();
     }
     #region DataContainer
 
@@ -36,13 +38,21 @@ public class DatabaseLoader
     }
 
     //대화 데이터
+    private Dictionary<string, List<DialogData>> dialogDatas;
+    public List<DialogData> GetDialog(string key)
+    {
+        if (dialogDatas == null && dialogDatas.ContainsKey(key) == false)
+            return null;
 
+        return dialogDatas[key];
+    }
     #endregion
 
 
     #region GachaDataLoad
     private void LoadGachaDB()
     {
+
         gachaDatas = new List<GachaData>();
 
         string fileName = DbFileNames.GachaDBName;
@@ -56,17 +66,39 @@ public class DatabaseLoader
 
     }
 
+    private void LoadDialogDB()
+    {
+        dialogDatas = new Dictionary<string, List<DialogData>>();
+
+
+        for (int i = 0; i < 1; i++)
+        {
+            string fileName =i.ToString()+".db";
+            IDbCommand dbcmd = null;
+            IDbConnection dbcon = null;
+            IDataReader reader = null;
+
+            OpenDB(fileName, ref dbcon);
+            ReadDialogDB(fileName, ref dbcmd, ref dbcon, ref reader);
+            CloseDB(ref dbcmd, ref dbcon, ref reader);
+        }
+
+
+    }
+
     public void OpenDB(string fileName, ref IDbConnection dbcon)
     {
+
         string filepath;
 #if UNITY_EDITOR
         filepath = Application.streamingAssetsPath + "/" + fileName;
 #else
-       filepath = Application.persistentDataPath + "/" + fileName;
+        filepath = Application.persistentDataPath + "/" + fileName;
 #endif
 
         if (!File.Exists(filepath))
         {
+
             Debug.LogWarning("File \"" + filepath + "\" does not exist. Attempting to create from \"" +
                              Application.dataPath + "!/assets/" + fileName);
             // if it doesn't ->
@@ -95,7 +127,9 @@ public class DatabaseLoader
     }
 
     public void ReadGachaDB(ref IDbCommand dbcmd, ref IDbConnection dbcon, ref IDataReader reader)
-    { // Selects a single Item
+    {
+
+        // Selects a single Item
         string query;
         /////////////////////////////////////////////////////////// 반드시 수정
         query = "SELECT * FROM Gacha";
@@ -109,8 +143,7 @@ public class DatabaseLoader
             while (reader.Read())
             {
                 int t = reader.FieldCount;
-                gachaDatas.Add(new GachaData(reader.GetString(0), reader.GetBoolean(1), reader.GetString(2)));
-
+                gachaDatas.Add(new GachaData(reader.GetString(0), bool.Parse(reader.GetString(1)), reader.GetString(2)));
             }
         }
     }
@@ -178,6 +211,32 @@ public class DatabaseLoader
 
     #endregion
     #region DialogDataLoad
+    public void ReadDialogDB(string fileName, ref IDbCommand dbcmd, ref IDbConnection dbcon, ref IDataReader reader)
+    {
+
+        // Selects a single Item
+        string query;
+        /////////////////////////////////////////////////////////// 반드시 수정
+        query = "SELECT * FROM Dialog";
+        ////////////////////////////////////////////////////////// 반드시 수정
+        dbcmd = dbcon.CreateCommand();
+        dbcmd.CommandText = query;
+
+        using (reader = dbcmd.ExecuteReader()) // 테이블에 있는 데이터들이 들어간다. 
+        {
+            List<DialogData> dialogData = new List<DialogData>();
+            while (reader.Read())
+            {
+                int t = reader.FieldCount;
+
+                if (dialogDatas.ContainsKey(fileName) == true) break;
+
+                dialogData.Add(new DialogData(reader.GetString(0), reader.GetString(1), (DialogData.SpeakerPosition)(reader.GetInt32(2))));
+
+            }
+            dialogDatas.Add(fileName, dialogData);
+        }
+    }
     #endregion
 
 }

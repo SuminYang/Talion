@@ -5,13 +5,14 @@ using UnityEngine;
 public static class Constants
 {
     public const string CoinKey = "Coin";
+    public const string NickNameKey = "NickName";
 }
 
 public static class PlayerDataManager
 {
 
 #if UNITY_EDITOR
-    [UnityEditor.MenuItem("PlayerData/ResetCoin")]
+    [UnityEditor.MenuItem("PlayerData/ResetData")]
     static void CreateExampleAssetInstance()
     {
         PlayerPrefs.DeleteAll();

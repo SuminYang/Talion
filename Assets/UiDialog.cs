@@ -239,7 +239,15 @@ public class UiDialog : MonoBehaviour
                     speakerLeftText.text = data.message;
 
                     speakerLeftName.gameObject.SetActive(true);
-                    speakerLeftName.text = data.speaker;
+
+                    if (data.speaker.Equals("주인공") == true)
+                    {
+                        speakerLeftName.text = PlayerPrefs.GetString(Constants.NickNameKey,"없음");
+                    }
+                    else
+                    {
+                        speakerLeftName.text = data.speaker;
+                    }
 
                     speakerLeftProfile.transform.SetAsLastSibling();
                     speakerLeftProfile.color = Color.white;
@@ -270,8 +278,15 @@ public class UiDialog : MonoBehaviour
                     speakerRightText.text = data.message;
 
                     speakerRightName.gameObject.SetActive(true);
-                    speakerRightName.text = data.speaker;
 
+                    if (data.speaker.Equals("주인공") == true)
+                    {
+                        speakerRightName.text = PlayerPrefs.GetString(Constants.NickNameKey, "없음");
+                    }
+                    else
+                    {
+                        speakerRightName.text = data.speaker;
+                    }
 
                     speakerRightProfile.transform.SetAsLastSibling();
                     speakerRightProfile.color = Color.white;
@@ -298,12 +313,6 @@ public class UiDialog : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeUserProfile(Image left,Image right)
-    {
-        iTween.
-
-
-    }
     private void HidePlayer(DialogData.SpeakerPosition position)
     {
         switch (position)

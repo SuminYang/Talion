@@ -28,4 +28,15 @@ public class IngameItemManager : DestroyedSingletonMono<IngameItemManager>
         SpawnItem(Vector3.zero, ItemType.Key);
     }
 
+
+    //테스트 코드
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnKeyItem();
+        }
+    }
+#endif
 }

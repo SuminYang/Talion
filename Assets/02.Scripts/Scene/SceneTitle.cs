@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class SceneTitle : UiSceneBase
 {
+    private void Start()
+    {
+        PlayBGM();
+    }
+    private void PlayBGM()
+    {
+        SoundManager.Instance.PlayBGM("탈리온");
+    }
     public void OnClickStartButton()
     {  
         SceneManager.Instance.ChangeScene(SceneType.SceneTrigger);

@@ -18,7 +18,7 @@ public class DatabaseLoader
     public void LoadAllDatas()
     {
         LoadGachaDB();
-        LoadDialogDB();
+        DataManager.Instance.StartCoroutine((LoadDialogDB()));
     }
     #region DataContainer
 
@@ -38,10 +38,10 @@ public class DatabaseLoader
     }
 
     //대화 데이터
-    private Dictionary<string, List<DialogData>> dialogDatas;
-    public List<DialogData> GetDialog(string key)
+    private Dictionary<int, List<DialogData>> dialogDatas;
+    public List<DialogData> GetDialog(int key)
     {
-        if (dialogDatas == null && dialogDatas.ContainsKey(key) == false)
+        if (dialogDatas == null || dialogDatas.ContainsKey(key) == false)
             return null;
 
         return dialogDatas[key];
@@ -66,20 +66,52 @@ public class DatabaseLoader
 
     }
 
-    private void LoadDialogDB()
+    private IEnumerator LoadDialogDB()
     {
-        dialogDatas = new Dictionary<string, List<DialogData>>();
+        dialogDatas = new Dictionary<int, List<DialogData>>();
 
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 100; i++)
         {
-            string fileName =i.ToString()+".db";
+            string fileName = string.Format("{0}.db", i);
+
+
+            string filepath;
+#if UNITY_EDITOR
+            filepath = Application.streamingAssetsPath + "/" + fileName;
+#else
+              filepath = Application.persistentDataPath + "/" + fileName;
+#endif
+
+#if UNITY_EDITOR
+            if (!File.Exists(filepath))
+            {
+                yield break;
+            }
+#else
+            if (!File.Exists(filepath))
+            {
+
+                Debug.LogWarning("File \"" + filepath + "\" does not exist. Attempting to create from \"" +
+                                 Application.dataPath + "!/assets/" + fileName);
+                // if it doesn't ->
+                // open StreamingAssets directory and load the db -> 
+                WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/" + fileName);
+                yield return loadDB;
+                if (!string.IsNullOrEmpty(loadDB.error))
+                {
+                    Debug.LogError("Can't read");
+                    yield break;
+                }
+            }
+#endif
+
             IDbCommand dbcmd = null;
             IDbConnection dbcon = null;
             IDataReader reader = null;
 
             OpenDB(fileName, ref dbcon);
-            ReadDialogDB(fileName, ref dbcmd, ref dbcon, ref reader);
+            ReadDialogDB(i, fileName, ref dbcmd, ref dbcon, ref reader);
             CloseDB(ref dbcmd, ref dbcon, ref reader);
         }
 
@@ -211,7 +243,7 @@ public class DatabaseLoader
 
     #endregion
     #region DialogDataLoad
-    public void ReadDialogDB(string fileName, ref IDbCommand dbcmd, ref IDbConnection dbcon, ref IDataReader reader)
+    public void ReadDialogDB(int dialogIndex, string fileName, ref IDbCommand dbcmd, ref IDbConnection dbcon, ref IDataReader reader)
     {
 
         // Selects a single Item
@@ -229,12 +261,12 @@ public class DatabaseLoader
             {
                 int t = reader.FieldCount;
 
-                if (dialogDatas.ContainsKey(fileName) == true) break;
+                if (dialogDatas.ContainsKey(dialogIndex) == true) break;
 
                 dialogData.Add(new DialogData(reader.GetString(0), reader.GetString(1), (DialogData.SpeakerPosition)(reader.GetInt32(2))));
 
             }
-            dialogDatas.Add(fileName, dialogData);
+            dialogDatas.Add(dialogIndex, dialogData);
         }
     }
     #endregion

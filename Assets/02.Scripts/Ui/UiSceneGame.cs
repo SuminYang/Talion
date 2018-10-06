@@ -8,6 +8,15 @@ public class UiSceneGame : UiSceneBase
     private GameObject inventory;
     private GameObject Menu;
 
+    [SerializeField]
+    private UiDialog uiDialog;
+
+    public void PlayDialog(int index)
+    {
+        if (uiDialog == null) return;
+        uiDialog.PlayDialog(index);
+    }
+
     public void OnClickInventoryButton()
     {
         inventory.SetActive(!inventory.activeSelf);
@@ -16,5 +25,17 @@ public class UiSceneGame : UiSceneBase
     public void OnClickMenuButton()
     {
         Menu.SetActive(!inventory.activeSelf);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PlayDialog(2);
+        }
+    
+
+      
+  
     }
 }

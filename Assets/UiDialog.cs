@@ -297,6 +297,13 @@ public class UiDialog : MonoBehaviour
                 break;
         }
     }
+
+    private IEnumerator FadeUserProfile(Image left,Image right)
+    {
+        iTween.
+
+
+    }
     private void HidePlayer(DialogData.SpeakerPosition position)
     {
         switch (position)

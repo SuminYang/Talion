@@ -33,9 +33,17 @@ public class UiSceneGame : UiSceneBase
         {
             PlayDialog(2);
         }
-    
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            PlayDialog(0);
+        }
 
-      
-  
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            PlayDialog(1);
+        }
+
+
+
     }
 }

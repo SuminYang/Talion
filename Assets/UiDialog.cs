@@ -250,6 +250,8 @@ public class UiDialog : MonoBehaviour
                     }
 
                     speakerLeftProfile.transform.SetAsLastSibling();
+
+                    iTween.Stop(speakerLeftProfile.gameObject);
                     speakerLeftProfile.color = Color.white;
 
                     if (profiles.ContainsKey(data.speaker) == true)
@@ -289,6 +291,8 @@ public class UiDialog : MonoBehaviour
                     }
 
                     speakerRightProfile.transform.SetAsLastSibling();
+
+                    iTween.Stop(speakerRightProfile.gameObject);
                     speakerRightProfile.color = Color.white;
 
                     if (profiles.ContainsKey(data.speaker) == true)
@@ -312,6 +316,7 @@ public class UiDialog : MonoBehaviour
                 break;
         }
     }
+ 
 
     private void HidePlayer(DialogData.SpeakerPosition position)
     {
@@ -321,7 +326,8 @@ public class UiDialog : MonoBehaviour
                 {
                     leftNameFrame.gameObject.SetActive(false);
                     speakerLeftProfile.transform.SetAsFirstSibling();
-                    speakerLeftProfile.color = Color.grey;
+                    iTween.ColorTo(speakerLeftProfile.gameObject, Color.grey, 0.7f);
+                  //  speakerLeftProfile.color = Color.grey;
 
                     speakerLeftName.gameObject.SetActive(false);
                     speakerLeftText.gameObject.SetActive(false);
@@ -332,7 +338,8 @@ public class UiDialog : MonoBehaviour
                 {
                     rightNameFrame.gameObject.SetActive(false);
                     speakerRightProfile.transform.SetAsFirstSibling();
-                    speakerRightProfile.color = Color.grey;
+                    iTween.ColorTo(speakerRightProfile.gameObject, Color.grey, 0.7f);
+                    //    speakerRightProfile.color = Color.grey;
                     speakerRightName.gameObject.SetActive(false);
                     speakerRightText.gameObject.SetActive(false);
                 }

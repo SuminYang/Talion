@@ -10,7 +10,7 @@ public class SceneTrigger : MonoBehaviour {
         if (PlayerPrefs.HasKey(Constants.NickNameKey) == true)
         {
             //게임으로 전환
-            SceneManager.Instance.ChangeScene(SceneType.SceneGame);
+            SceneManager.Instance.ChangeScene(SceneType.SceneHotelFront);
         }
         else
         {

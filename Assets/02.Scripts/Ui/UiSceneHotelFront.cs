@@ -3,27 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UiSceneHotelFront : UiSceneBase
-
 {
-
-    [SerializeField]
-    private UiDialog uiDialog;
-
-public void PlayDialog(int index)
-{
-    if (uiDialog == null) return;
-    uiDialog.PlayDialog(index);
-}
-
-#if UNITY_EDITOR
-
-    void Awake()
+    private void Start()
     {
-            PlayDialog(0);
-
+        UiDialog.Instance.PlayDialog(0);
     }
-
-
-#endif
-
 }

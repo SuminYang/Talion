@@ -8,15 +8,6 @@ public class UiSceneGame : UiSceneBase
     private GameObject inventory;
     private GameObject Menu;
 
-    [SerializeField]
-    private UiDialog uiDialog;
-
-    public void PlayDialog(int index)
-    {
-        if (uiDialog == null) return;
-        uiDialog.PlayDialog(index);
-    }
-
     public void OnClickInventoryButton()
     {
         inventory.SetActive(!inventory.activeSelf);
@@ -31,16 +22,10 @@ public class UiSceneGame : UiSceneBase
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            PlayDialog(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            PlayDialog(1);
+            UiDialog.Instance.PlayDialog(0);
         }
     }
-
 #endif
 }

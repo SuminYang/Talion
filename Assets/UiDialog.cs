@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiDialog : MonoBehaviour
+public class UiDialog : SingletonMono<UiDialog>
 {
     [SerializeField]
     private Image speakerLeftProfile;

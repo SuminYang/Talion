@@ -27,6 +27,8 @@ public class UiSceneGame : UiSceneBase
         Menu.SetActive(!inventory.activeSelf);
     }
 
+#if UNITY_EDITOR
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -42,8 +44,7 @@ public class UiSceneGame : UiSceneBase
         {
             PlayDialog(1);
         }
-
-
-
     }
+
+#endif
 }

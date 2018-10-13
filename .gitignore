@@ -12,7 +12,8 @@ UnityGenerated/
  
 Library/
  
- 
+ # Visual Studio cache directory
+.vs/
  
 # ===================================== #
  

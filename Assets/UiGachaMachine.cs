@@ -46,10 +46,28 @@ public class UiGachaMachine : MonoBehaviour, IPointerClickHandler
     //임시 리소스
     [SerializeField]
     private List<Sprite> ballSprites;
+    private Dictionary<string, Sprite> itemIcons;
 
     private void Start()
     {
         SetMachineWaiting();
+        LoadIcon();
+    }
+
+    private void LoadIcon()
+    {
+        itemIcons = new Dictionary<string, Sprite>();
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Gacha");
+        for(int i=0;i< sprites.Length; i++)
+        {
+            itemIcons.Add(sprites[i].name, sprites[i]);
+        }
+    }
+
+    private Sprite getIcon(string name)
+    {
+        if (itemIcons == null || itemIcons.ContainsKey(name) == false) return null;
+        return itemIcons[name];
     }
 
     private void SetMachineWaiting()
@@ -127,12 +145,13 @@ public class UiGachaMachine : MonoBehaviour, IPointerClickHandler
         iTween.FadeTo(flash.gameObject, iTween.Hash("alpha", 1f, "Time", flashTime, "loopType", "pingpong", "easeType", "easeInQutQuart"));
 
         yield return new WaitForSeconds(flashTime * 0.5f);
-        uiGachaPopup.SetIcon(null);
+        string itemName = DataManager.Instance.dataBaseLoader.GetRandomGachaItem;
+        uiGachaPopup.SetIcon(getIcon(itemName));
         yield return new WaitForSeconds(flashTime * 0.5f);
 
         flash.color = new Color(1f, 1f, 1f, 0f);
         iTween.Stop(flash.gameObject);
-        string itemName = DataManager.Instance.dataBaseLoader.GetRandomGachaItem;
+ 
         uiGachaPopup.ShowItemInfoText(itemSpawnTime, itemName);
         uiItemBoard.UpdateItemInfo(itemName);
 

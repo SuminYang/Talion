@@ -41,7 +41,7 @@ public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
     }
 }
 
-//씬이 전환돼면 사라짐 (SceneManager,SoundManager 등등 모든 씬에서 사용하는 애들)
+//씬이 전환되면 사라짐 서로 레퍼런스 참조 줄일때 사용
 public class DestroyedSingletonMono<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance = null;

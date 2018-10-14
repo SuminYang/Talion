@@ -10,7 +10,7 @@ public class SceneTitle : UiSceneBase
     }
     private void PlayBGM()
     {
-        SoundManager.Instance.PlayBGM("탈리온");
+        SoundManager.Instance.PlayBGM("Talion");
     }
     public void OnClickStartButton()
     {  

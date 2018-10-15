@@ -263,7 +263,7 @@ public class DatabaseLoader
 
                 if (dialogDatas.ContainsKey(dialogIndex) == true) break;
 
-                dialogData.Add(new DialogData(reader.GetString(0), reader.GetString(1), (DialogData.SpeakerPosition)(reader.GetInt32(2))));
+                dialogData.Add(new DialogData(reader.GetString(0), reader.GetString(1), reader.GetString(2), (DialogData.SpeakerPosition)(reader.GetInt32(3))));
 
             }
             dialogDatas.Add(dialogIndex, dialogData);

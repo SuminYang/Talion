@@ -29,11 +29,13 @@ public class DialogData
         LEFT,RIGHT
     }
 
+    public string filename { get; private set; }
     public string speaker { get; private set; }
     public string message { get; private set; }
     public SpeakerPosition position { get; private set; }
-    public DialogData(string speaker, string message, SpeakerPosition position) 
+    public DialogData(string filename, string speaker, string message, SpeakerPosition position) 
     {
+        this.filename = filename;
         this.speaker = speaker;
         this.message = message;
         this.position = position;

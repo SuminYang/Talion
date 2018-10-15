@@ -262,7 +262,7 @@ public class UiDialog : SingletonMono<UiDialog>
                     else
                     {
                         //로드후 세팅
-                        if (LoadCharacterSprite(data.speaker) == true)
+                        if (LoadCharacterSprite(data.filename, data.speaker) == true)
                         {
                             speakerLeftProfile.gameObject.SetActive(true);
                             speakerLeftProfile.sprite = profiles[data.speaker];
@@ -303,7 +303,7 @@ public class UiDialog : SingletonMono<UiDialog>
                     else
                     {
                         //로드후 세팅
-                        if (LoadCharacterSprite(data.speaker) == true)
+                        if (LoadCharacterSprite(data.filename, data.speaker) == true)
                         {
                             speakerRightProfile.gameObject.SetActive(true);
                             speakerRightProfile.sprite = profiles[data.speaker];
@@ -347,9 +347,11 @@ public class UiDialog : SingletonMono<UiDialog>
         }
     }
     //로드 성공 true / 실패 false
-    private bool LoadCharacterSprite(string name)
+    private bool LoadCharacterSprite(string filename, string name)
     {
-        Sprite sprite = Resources.Load<Sprite>(string.Format("Characters/{0}/{1}", name, name));
+         Debug.Log(string.Format("Characters/{0}", filename));
+
+        Sprite sprite = Resources.Load<Sprite>(string.Format("Characters/{0}", filename));
 
         if (sprite != null && profiles.ContainsKey(name) == false)
         {
@@ -357,7 +359,7 @@ public class UiDialog : SingletonMono<UiDialog>
             return true;
         }
 
-        Debug.LogError("캐릭터 리소스 로드 실패");
+        Debug.LogError("캐릭터 리소스 로드 실패 : " + filename  + " " + name);
         return false;
     }
 

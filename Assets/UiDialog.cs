@@ -30,6 +30,9 @@ public class UiDialog : SingletonMono<UiDialog>
     [SerializeField]
     private GameObject dialogMask;
 
+    [SerializeField]
+    private GameObject backGouund;
+
     private List<DialogData> dialogDatas;
 
     private Dictionary<string, Sprite> profiles = new Dictionary<string, Sprite>();
@@ -110,6 +113,8 @@ public class UiDialog : SingletonMono<UiDialog>
 
         rightNameFrame.gameObject.SetActive(false);
 
+        backGouund.gameObject.SetActive(false);
+
         dialogDatas = null;
 
         ShowMask(false);
@@ -128,6 +133,8 @@ public class UiDialog : SingletonMono<UiDialog>
             {
                 break;
             }
+
+            backGouund.gameObject.SetActive(true);
 
             StartDialog(dialogDatas[nowDialogIndex]);
 

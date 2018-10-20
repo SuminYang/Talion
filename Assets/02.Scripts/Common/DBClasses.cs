@@ -10,12 +10,15 @@ public static class DbFileNames
 
 public class GachaData
 {
+    public string fileName { get; private set; }
+
     public string itemName { get; private set; }
     public bool hasItem { get; private set; }
     public string description { get; private set; }
 
-    public GachaData(string itemName, bool hasItem, string description)
+    public GachaData(string fileName, string itemName, bool hasItem, string description)
     {
+        this.fileName = fileName;
         this.itemName = itemName;
         this.hasItem = hasItem;
         this.description = description;

@@ -64,10 +64,10 @@ public class UiGachaMachine : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private Sprite getIcon(string name)
+    private Sprite getIcon(string fileName)
     {
-        if (itemIcons == null || itemIcons.ContainsKey(name) == false) return null;
-        return itemIcons[name];
+        if (itemIcons == null || itemIcons.ContainsKey(fileName) == false) return null;
+        return itemIcons[fileName];
     }
 
     private void SetMachineWaiting()
@@ -145,15 +145,15 @@ public class UiGachaMachine : MonoBehaviour, IPointerClickHandler
         iTween.FadeTo(flash.gameObject, iTween.Hash("alpha", 1f, "Time", flashTime, "loopType", "pingpong", "easeType", "easeInQutQuart"));
 
         yield return new WaitForSeconds(flashTime * 0.5f);
-        string itemName = DataManager.Instance.dataBaseLoader.GetRandomGachaItem;
-        uiGachaPopup.SetIcon(getIcon(itemName));
+        GachaData item = DataManager.Instance.dataBaseLoader.GetRandomGachaItem;
+        uiGachaPopup.SetIcon(getIcon(item.fileName));
         yield return new WaitForSeconds(flashTime * 0.5f);
 
         flash.color = new Color(1f, 1f, 1f, 0f);
         iTween.Stop(flash.gameObject);
  
-        uiGachaPopup.ShowItemInfoText(itemSpawnTime, itemName);
-        uiItemBoard.UpdateItemInfo(itemName);
+        uiGachaPopup.ShowItemInfoText(itemSpawnTime, item.itemName);
+        uiItemBoard.UpdateItemInfo(item.itemName);
 
         yield return new WaitForSeconds(itemSpawnTime);
 

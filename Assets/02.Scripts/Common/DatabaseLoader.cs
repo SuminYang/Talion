@@ -24,16 +24,16 @@ public class DatabaseLoader
 
     //가챠 데이터
     public List<GachaData> gachaDatas { get; private set; }
-    public string GetRandomGachaItem
+    public GachaData GetRandomGachaItem
     {
         get
         {
             if (gachaDatas == null) return null;
-            string itemName = gachaDatas[UnityEngine.Random.Range(0, gachaDatas.Count)].itemName;
+            GachaData item = gachaDatas[UnityEngine.Random.Range(0, gachaDatas.Count)];
 
-            UnlockGachaItem(itemName);
+            UnlockGachaItem(item.itemName);
 
-            return itemName;
+            return item;
         }
     }
 
@@ -175,7 +175,7 @@ public class DatabaseLoader
             while (reader.Read())
             {
                 int t = reader.FieldCount;
-                gachaDatas.Add(new GachaData(reader.GetString(0), bool.Parse(reader.GetString(1)), reader.GetString(2)));
+                gachaDatas.Add(new GachaData(reader.GetString(0), reader.GetString(1), bool.Parse(reader.GetString(2)), reader.GetString(3)));
             }
         }
     }
@@ -215,8 +215,8 @@ public class DatabaseLoader
                 string Boolean = "True";
 
                 string sqlQuery = "UPDATE  Gacha  SET " +
-                    "HasItem =" + "'" + Boolean + "'"
-                    + "WHERE Name = " + "'" + ID + "'";
+                    "HasItem =" + "'" + Boolean + "' "
+                    + "WHERE Name = " + "'" + ID + "' ";
 
                 // string sqlQuery = "INSERT INTO ItemTable  (Name,Desc) VALUES('죽창','죽창이다.')";
 

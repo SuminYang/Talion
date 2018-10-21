@@ -139,6 +139,8 @@ public class UiDialog : SingletonMono<UiDialog>
     {
         int nowDialogIndex = 0;
 
+        yield return new WaitForSeconds(2);
+
         while (nowPlaying == true)
         {
             if (nowDialogIndex >= dialogDatas.Count)

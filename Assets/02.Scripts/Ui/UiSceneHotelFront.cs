@@ -8,4 +8,16 @@ public class UiSceneHotelFront : UiSceneBase
     {
         UiDialog.Instance.PlayDialog(0);
     }
+
+    private void Update()
+    {
+        // check endDialog
+        if (UiDialog.Instance.checkEndDialog() )
+        {
+            Debug.Log("endDialog is true");
+            // load Scene....  etc...
+            SceneManager.Instance.ChangeScene(SceneType.SceneGame);
+        }
+    }
+
 }

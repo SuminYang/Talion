@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a593e03b186fff34fb187ebc838e5a81
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KoPubDotum
+  fontNames:
+  - KoPubDotum
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 03e322d37b6128d4f8e841e0396dd78e, type: 3}
+  - {fileID: 12800000, guid: 1bf778deb08f16345b03fb0698520c58, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

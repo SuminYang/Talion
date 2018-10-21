@@ -49,6 +49,14 @@ public class UiDialog : SingletonMono<UiDialog>
 
     private bool isUserClickTouchScreen = false;
 
+    private bool endDialog = false;
+
+
+    public bool checkEndDialog ()
+    {
+        return endDialog;
+    }
+
     public void PlayDialog(int dialogIndex)
     {
         if (nowPlaying == true)
@@ -87,6 +95,10 @@ public class UiDialog : SingletonMono<UiDialog>
         dialogObjects.gameObject.SetActive(false);
         nowPlaying = false;
         isUserClickTouchScreen = false;
+
+        // 2018.10.21 Check EndDialog
+        endDialog = true;
+
     }
 
     private void ResetDialog()

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 //씬 추가될때마다 여기에 enum값 추가 해주셔야 되고 이름은 추가하신 씬 이름과 같아야 합니다.
 public enum SceneType
 {
-    SceneTitle, SceneGame , SceneGacha , SceneTrigger , SceneNameinput, SceneHotelFront
+    SceneTitle, SceneGame , SceneGacha , SceneTrigger , SceneNameinput, SceneHotelFront, SceneElevator,
+    SceneBar, SceneAisle, SceneRoom
 }
 
 public class SceneManager : SingletonMono<SceneManager>

@@ -990,7 +990,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1557838007965548, guid: 8ee5c098db3a2ab4b999fbcc4af597bf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114630230186517212, guid: 8ee5c098db3a2ab4b999fbcc4af597bf,
         type: 2}
@@ -1153,11 +1153,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1392267361438926, guid: 8ee5c098db3a2ab4b999fbcc4af597bf, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1290968012475950, guid: 8ee5c098db3a2ab4b999fbcc4af597bf, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114936620555289732, guid: 8ee5c098db3a2ab4b999fbcc4af597bf,
         type: 2}
@@ -1370,6 +1370,10 @@ Prefab:
     - target: {fileID: 114538251615655258, guid: 8ee5c098db3a2ab4b999fbcc4af597bf,
         type: 2}
       propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569481199168206, guid: 8ee5c098db3a2ab4b999fbcc4af597bf, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:

@@ -19,7 +19,7 @@ public class SceneTitle : UiSceneBase
 
     public void OnClickLoadButton()
     {
-        //데이터 로드해서 게임 시작 (뭘 구현 하죵)
+        //데이터 로드해서 게임 시작
     }
 
     public void OnClickGachaButton()

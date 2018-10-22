@@ -49,6 +49,16 @@ public class UiSceneGame : UiSceneBase
         UiMenu.SetActive(false);
     }
 
+    public void OnClickEmplyoee()
+    {
+        UiDialog.Instance.PlayDialog(1);
+    }
+
+    public void OnClickElevator()
+    {
+        SceneManager.Instance.ChangeScene(SceneType.SceneElevator);
+    }
+
 #if UNITY_EDITOR
 
     private void Update()

@@ -26,3 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/SceneHotelFront.unity
     guid: 487610d7a8a806a4eafedebc447914b5
+  - enabled: 1
+    path: Assets/01.Scenes/SceneAisle.unity
+    guid: 9ffd0045f3939d94a9b3bd43c3a6168c
+  - enabled: 1
+    path: Assets/01.Scenes/SceneBar.unity
+    guid: 992094b0baca4e141b83aac99a3d3aa4
+  - enabled: 1
+    path: Assets/01.Scenes/SceneElevator.unity
+    guid: a85ecb1f5ec17df43b94d625fe970d8a

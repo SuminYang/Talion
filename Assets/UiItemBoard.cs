@@ -27,17 +27,17 @@ public class UiItemBoard : MonoBehaviour
         {
             for (int i = 0; i < gachaDatas.Count; i++)
             {
-                UiGachaItem item = MakeItem(gachaDatas[i].itemName, gachaDatas[i].hasItem, gachaDatas[i].description);
+                UiGachaItem item = MakeItem(gachaDatas[i].fileName,gachaDatas[i].itemName, gachaDatas[i].hasItem, gachaDatas[i].description);
                 itemList.Add(gachaDatas[i].itemName, item);
             }
         }
     }
 
-    private UiGachaItem MakeItem(string name, bool hasItem, string description)
+    private UiGachaItem MakeItem(string fileName, string name, bool hasItem, string description)
     {
         UiGachaItem item = Instantiate(itemPrefab, itemParents);
 
-        item.Initielize(name, hasItem, description, descriptionParents);
+        item.Initielize(fileName, name, hasItem, description, descriptionParents);
 
         return item;
     }

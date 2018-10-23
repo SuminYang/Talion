@@ -20,9 +20,9 @@ public class UiGachaItem : MonoBehaviour
     [SerializeField]
     private Button button;
 
-    public void Initielize(string name, bool hasItem, string description, Transform descriptionParents)
+    public void Initielize(string fileName, string name, bool hasItem, string description, Transform descriptionParents)
     {
-        icon.sprite = Resources.Load<Sprite>(string.Format("Gacha/{0}", name));
+        icon.sprite = Resources.Load<Sprite>(string.Format("Gacha/{0}", fileName));
 
         StartCoroutine(SetDescriptionParent(descriptionParents));
 

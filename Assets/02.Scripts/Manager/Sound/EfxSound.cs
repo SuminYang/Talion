@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EfxSound : MonoBehaviour
 {
+    
     [SerializeField]
     private AudioSource audioSource;
 

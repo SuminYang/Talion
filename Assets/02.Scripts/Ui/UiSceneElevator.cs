@@ -5,12 +5,17 @@ using UnityEngine;
 public class UiSceneElevator : UiSceneBase
 {
 
-    public void OnClickBOneButton()
+    public void OnClickB1Button()
     {
         SceneManager.Instance.ChangeScene(SceneType.SceneBar);
     }
 
-    public void OnClickOneFButton()
+    public void OnClick1FButton()
+    {
+        SceneManager.Instance.ChangeScene(SceneType.SceneGame);
+    }
+
+    public void OnClick2FButton()
     {
         SceneManager.Instance.ChangeScene(SceneType.SceneAisle);
     }

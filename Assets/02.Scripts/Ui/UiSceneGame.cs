@@ -51,7 +51,7 @@ public class UiSceneGame : UiSceneBase
 
     public void OnClickEmplyoee()
     {
-        UiDialog.Instance.PlayDialog(1);
+        UiDialog.Instance.PlayDialog(4);
     }
 
     public void OnClickElevator()
@@ -62,6 +62,11 @@ public class UiSceneGame : UiSceneBase
     public void OnClickCleaner()
     {
         UiDialog.Instance.PlayDialog(3);
+    }
+
+    public void OnClickSohyun()
+    {
+        UiDialog.Instance.PlayDialog(11);
     }
 
 #if UNITY_EDITOR

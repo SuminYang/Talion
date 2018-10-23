@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiSceneAisle : MonoBehaviour {
+public class UiSceneAisle : UiSceneBase
+
+{
 
     public void OnClickArrowButton()
     {
@@ -12,5 +14,15 @@ public class UiSceneAisle : MonoBehaviour {
     public void OnClickRoomButton()
     {
         SceneManager.Instance.ChangeScene(SceneType.ScenePlayerRoom);
+    }
+
+    public void OnClickBeom()
+    {
+        UiDialog.Instance.PlayDialog(7);
+    }
+
+    public void OnClickPublic()
+    {
+        UiDialog.Instance.PlayDialog(8);
     }
 }

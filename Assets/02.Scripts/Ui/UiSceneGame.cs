@@ -23,7 +23,7 @@ public class UiSceneGame : UiSceneBase
 
     public void OnClickMenuButton()
     {
-        UiMenu.SetActive(!inventory.activeSelf);
+        UiMenu.SetActive(!UiMenu.activeSelf);
     }
 
     public void OnClickBtnContinue()
